@@ -18,7 +18,9 @@
       var data = ev.dataTransfer.getData("text");
       ev.target.appendChild(document.getElementById(data));
     }
+
   </script>
+
   <style>
     body {
       text-align: center;
@@ -92,8 +94,9 @@
 </head>
 
 <body>
+  <button type="button" class="btn btn-primary" id="btnUndo" disabled="enabled">Undo</button>
   <div>
-  <table id="tblOne" style="width:40%; float:left" id="casilla1" ondrop="dragDrop(event)" ondragover="allowDrop(event)">
+  <table id="tblOne" style="width:50%; float:left" id="casilla1" ondrop="dragDrop(event)" ondragover="allowDrop(event)">
   	<tr>
   		<td>
       <th>1</th>
@@ -384,7 +387,7 @@
     </tr></td>
   	</tr>
   </table>
-  <table id="tblTwo" style="width:30%; float:left; padding:40px" id="casilla2" ondrop="dragDrop(event)" ondragover="allowDrop(event)">
+  <table id="tblTwo" style="width:0%; padding:30px;" id="casilla2" ondrop="dragDrop(event)" ondragover="allowDrop(event)">
   	<tr>
   		<th></th>
       <td><img id="ficha1" src="images\A_tile.png" draggable="true" ondragstart="dragStart(event)" /></td>
@@ -533,7 +536,7 @@
     </tr>
   </table>
 </div>
-<div style="width:55%; float:right">
+<div style="width:45%; float:right">
   <table id="casilla3" ondrop="dragDrop(event)" ondragover="allowDrop(event)">
 
     <tr>

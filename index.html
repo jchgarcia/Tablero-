@@ -567,6 +567,32 @@
     </tr>
   	</table>
   </div>
-  </body>
+  <script>
+  window.onload = function() {
+    moveFicha32();
+  };
+  </script>
+<script>
+  // Function to move ficha32 to a specific location
+  function moveFicha32() {
+    // Get the element to move
+    const ficha32 = document.getElementById("ficha32");
+    
+    // Get the target location (e.g., cell A1)
+    const targetCell = document.getElementById("A1");
+    
+    // Append ficha32 to the target cell
+    if (ficha32 && targetCell) {
+      targetCell.appendChild(ficha32);
+    } else {
+      console.error("Ficha32 or target cell not found!");
+    }
+  }
+
+  // Call the function to move ficha32
+  moveFicha32();
+</script>  
+</body>
+
 
 </html>

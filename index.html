@@ -22,6 +22,12 @@
   </script>
 
   <style>
+    .highlight {
+      border: 3px solid yellow;
+    }
+  </style>
+
+  <style>
     body {
       text-align: center;
     }
@@ -567,6 +573,37 @@
     </tr>
   	</table>
   </div>
+  <script>
+    let selectedFicha = null;
+
+    document.querySelectorAll('img[id^="ficha"]').forEach(ficha => {
+      ficha.addEventListener('click', function () {
+        // Remove highlight from the previously selected ficha
+        if (selectedFicha) {
+          selectedFicha.classList.remove('highlight');
+        }
+
+        // Highlight the clicked ficha
+        this.classList.add('highlight');
+        selectedFicha = this;
+
+        // Save the state (e.g., in localStorage)
+        localStorage.setItem('selectedFicha', this.id);
+      });
+    });
+
+    // Restore the state on page load
+    window.addEventListener('load', function () {
+      const savedFichaId = localStorage.getItem('selectedFicha');
+      if (savedFichaId) {
+        const savedFicha = document.getElementById(savedFichaId);
+        if (savedFicha) {
+          savedFicha.classList.add('highlight');
+          selectedFicha = savedFicha;
+        }
+      }
+    });
+  </script>
   </body>
 
 </html>

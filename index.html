@@ -576,6 +576,19 @@
   <script>
     let selectedFicha = null;
 
+    // Add click event to celdas
+    document.querySelectorAll('td').forEach(celda => {
+      celda.addEventListener('click', function () {
+        if (selectedFicha) {
+          // Move the selected ficha to the clicked celda
+          this.appendChild(selectedFicha);
+
+          // Clear the saved state
+          localStorage.removeItem('selectedFicha');
+        }
+      });
+    });
+
     document.querySelectorAll('img[id^="ficha"]').forEach(ficha => {
       ficha.addEventListener('click', function () {
         // Remove highlight from the previously selected ficha

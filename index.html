@@ -22,6 +22,12 @@
   </script>
 
   <style>
+    .highlight {
+      border: 3px solid yellow;
+    }
+  </style>
+
+  <style>
     body {
       text-align: center;
     }
@@ -431,8 +437,8 @@
     </tr>
     <tr>
       <th></th>
-      <td><img id="ficha32" draggable="true" ondragstart="dragStart(event)" src="images\e.png" /></td>
       <td><img id="ficha31" draggable="true" ondragstart="dragStart(event)" src="images\e.png" /></td>
+      <td><img id="ficha32" draggable="true" ondragstart="dragStart(event)" src="images\e.png" /></td>
       <td><img id="ficha33" draggable="true" ondragstart="dragStart(event)" src="images\e.png" /></td>
       <td><img id="ficha34" draggable="true" ondragstart="dragStart(event)" src="images\e.png" /></td>
       <td><img id="ficha35" draggable="true" ondragstart="dragStart(event)" src="images\e.png" /></td>
@@ -448,8 +454,8 @@
     <tr>
       <th></th>
       <td><img id="ficha41" draggable="true" ondragstart="dragStart(event)" src="images\h.png" /></td>
-      <td><img id="ficha43" draggable="true" ondragstart="dragStart(event)" src="images\i.png" /></td>
       <td><img id="ficha42" draggable="true" ondragstart="dragStart(event)" src="images\i.png" /></td>
+      <td><img id="ficha43" draggable="true" ondragstart="dragStart(event)" src="images\i.png" /></td>
       <td><img id="ficha44" draggable="true" ondragstart="dragStart(event)" src="images\i.png" /></td>
       <td><img id="ficha45" draggable="true" ondragstart="dragStart(event)" src="images\i.png" /></td>
       <td><img id="ficha46" draggable="true" ondragstart="dragStart(event)" src="images\i.png" /></td>
@@ -519,10 +525,10 @@
     </tr>
     <tr>
       <th></th>
+      <td><img id="ficha91" draggable="true" ondragstart="dragStart(event)" src="images\u.png" /></td>
       <td><img id="ficha92" draggable="true" ondragstart="dragStart(event)" src="images\u.png" /></td>
       <td><img id="ficha93" draggable="true" ondragstart="dragStart(event)" src="images\u.png" /></td>
       <td><img id="ficha94" draggable="true" ondragstart="dragStart(event)" src="images\u.png" /></td>
-      <td><img id="ficha91" draggable="true" ondragstart="dragStart(event)" src="images\u.png" /></td>
       <td><img id="ficha95" draggable="true" ondragstart="dragStart(event)" src="images\v.png" /></td>
       <td><img id="ficha96" draggable="true" ondragstart="dragStart(event)" src="images\x.png" /></td>
       <td><img id="ficha97" draggable="true" ondragstart="dragStart(event)" src="images\y.png" /></td>
@@ -549,7 +555,7 @@
       <td class="normal" id="ATA7"title="Este es el Atril"></td>
       <td class="normal" id="ATA8"title="Este es el Atril"></td>
       <td>
-        👈ATRILito
+        👈ATRIL
       </td>
     </tr>
     <tr>
@@ -568,31 +574,49 @@
   	</table>
   </div>
   <script>
-  window.onload = function() {
-    moveFicha32();
-  };
+    let selectedFicha = null;
+
+    // Add click event to celdas
+    document.querySelectorAll('td').forEach(celda => {
+      celda.addEventListener('click', function () {
+        if (selectedFicha) {
+          // Move the selected ficha to the clicked celda
+          this.appendChild(selectedFicha);
+
+          // Clear the saved state
+          localStorage.removeItem('selectedFicha');
+        }
+      });
+    });
+
+    document.querySelectorAll('img[id^="ficha"]').forEach(ficha => {
+      ficha.addEventListener('click', function () {
+        // Remove highlight from the previously selected ficha
+        if (selectedFicha) {
+          selectedFicha.classList.remove('highlight');
+        }
+
+        // Highlight the clicked ficha
+        this.classList.add('highlight');
+        selectedFicha = this;
+
+        // Save the state (e.g., in localStorage)
+        localStorage.setItem('selectedFicha', this.id);
+      });
+    });
+
+    // Restore the state on page load
+    window.addEventListener('load', function () {
+      const savedFichaId = localStorage.getItem('selectedFicha');
+      if (savedFichaId) {
+        const savedFicha = document.getElementById(savedFichaId);
+        if (savedFicha) {
+          savedFicha.classList.add('highlight');
+          selectedFicha = savedFicha;
+        }
+      }
+    });
   </script>
-<script>
-  // Function to move ficha32 to a specific location
-  function moveFicha32() {
-    // Get the element to move
-    const ficha32 = document.getElementById("ficha32");
-    
-    // Get the target location (e.g., cell A1)
-    const targetCell = document.getElementById("A1");
-    
-    // Append ficha32 to the target cell
-    if (ficha32 && targetCell) {
-      targetCell.appendChild(ficha32);
-    } else {
-      console.error("Ficha32 or target cell not found!");
-    }
-  }
-
-  // Call the function to move ficha32
-  moveFicha32();
-</script>  
-</body>
-
+  </body>
 
 </html>

@@ -390,8 +390,7 @@
       <td class="normal"   id="O13" title="O13"></td>
       <td class="normal"   id="O14" title="O14"></td>
       <td class="triplew"  id="O15" title="O15"></td>
-    </tr></td>
-  	</tr>
+    </tr>
   </table>
   <table id="tblTwo" style="width:0%; padding:30px;" id="casilla2" ondrop="dragDrop(event)" ondragover="allowDrop(event)">
   	<tr>
@@ -575,14 +574,17 @@
   </div>
   <script>
     let selectedFicha = null;
+    let selectedFichaLocation=null;
 
     // Add click event to celdas
     document.querySelectorAll('td').forEach(celda => {
       celda.addEventListener('click', function () {
         if (selectedFicha) {
-          // Move the selected ficha to the clicked celda
-          this.appendChild(selectedFicha);
-
+          selectedFichaLocation = getSelectedFichaLocation();
+          // Move the selected ficha to the clicked cell
+          celda.appendChild(selectedFicha);
+          // console.log("ficha: ${selectedFicha} location:${selectedFichaLocation}");
+          console.log(`Ficha: ${selectedFicha.id} moved to location: ${celda.id}`);
           // Clear the saved state
           localStorage.removeItem('selectedFicha');
         }
@@ -597,11 +599,13 @@
         }
 
         // Highlight the clicked ficha
-        this.classList.add('highlight');
-        selectedFicha = this;
+        ficha.classList.add('highlight');
+        selectedFicha = ficha;
+        selectedFichaLocation = selectedFicha.id;
+        console.log(`Selected ficha: ${ficha.id} at location: ${selectedFichaLocation}`);
 
         // Save the state (e.g., in localStorage)
-        localStorage.setItem('selectedFicha', this.id);
+        localStorage.setItem('selectedFicha', ficha.id);
       });
     });
 
@@ -613,9 +617,18 @@
         if (savedFicha) {
           savedFicha.classList.add('highlight');
           selectedFicha = savedFicha;
+          selectedFichaLocation= getSelectedFichaLocation();
+            console.log(`Restored selected ficha: ${selectedFicha.id} at location: ${selectedFichaLocation}`);
         }
       }
     });
+
+    function getSelectedFichaLocation() {
+      if (selectedFicha && selectedFicha.parentElement) {
+        return selectedFicha.parentElement.id;
+      }
+      return null;
+    }
   </script>
   </body>
 

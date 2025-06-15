@@ -561,7 +561,24 @@
     let selectedFichaLocation = null;
     let skipNext = false;
 
+    // Add Undo button click listener
+    document.getElementById('btnUndo').addEventListener('click', function () {
+        if (window.fichasList && window.fichasList.length > 0) {
+            const lastMove = window.fichasList.pop();
+            if (window.fichasList.length === 0) {
+                document.getElementById('btnUndo').disabled = true;
+            } else {
+                document.getElementById('btnUndo').disabled = false;
+            }
 
+            const ficha = document.getElementById(lastMove.fichaId);
+            const prevCell = document.getElementById(lastMove.location);
+            if (ficha && prevCell) {
+                prevCell.appendChild(ficha);
+            }
+            console.log('Undo performed:', lastMove);
+        }
+    });
     document.querySelectorAll('img[id^="ficha"]').forEach(ficha => {
         ficha.addEventListener('click', function () {
             // Remove highlight from the previously selected ficha
@@ -588,8 +605,9 @@
                 if (selectedFicha) {
                     // Add ficha and location to a mutable list
                     if (!window.fichasList) window.fichasList = [];
-                    window.fichasList.push({ fichaId: selectedFicha.id, location: selectedFichaLocation });
+                    window.fichasList.push({fichaId: selectedFicha.id, location: selectedFichaLocation});
                     console.log(`Current fichas list:`, window.fichasList);
+                    document.getElementById('btnUndo').disabled = false;
                     // Move the selected ficha to the clicked cell
                     celda.appendChild(selectedFicha);
                     console.log(`Ficha: ${selectedFicha.id} is currently at location: ${selectedFichaLocation}`);
@@ -599,6 +617,7 @@
                     console.log(`Ficha: ${selectedFicha.id} moved to location: ${selectedFichaLocation}`);
                     // Clear the saved state
                     localStorage.removeItem('selectedFicha');
+
                 }
             }
             skipNext = false; // Reset the skip flag for the next click

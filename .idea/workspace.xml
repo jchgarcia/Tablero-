@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9bd83831-bb56-45de-979c-189431b9b070" name="Changes" comment="keeping locationn from last click">
+    <list default="true" id="9bd83831-bb56-45de-979c-189431b9b070" name="Changes" comment="saving ficha and previous location into a stack">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
@@ -75,7 +75,7 @@
       <workItem from="1745821971397" duration="588000" />
       <workItem from="1745822598987" duration="136000" />
       <workItem from="1745822745348" duration="3573000" />
-      <workItem from="1749918968232" duration="10087000" />
+      <workItem from="1749918968232" duration="11148000" />
     </task>
     <task id="LOCAL-00001" summary="fixed fichas location">
       <option name="closed" value="true" />
@@ -109,7 +109,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749976740057</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="saving ficha and previous location into a stack">
+      <option name="closed" value="true" />
+      <created>1749980876824</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1749980876824</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -131,6 +139,7 @@
     <MESSAGE value="highlighted ficha" />
     <MESSAGE value="wip- fixed minor errors" />
     <MESSAGE value="keeping locationn from last click" />
-    <option name="LAST_COMMIT_MESSAGE" value="keeping locationn from last click" />
+    <MESSAGE value="saving ficha and previous location into a stack" />
+    <option name="LAST_COMMIT_MESSAGE" value="saving ficha and previous location into a stack" />
   </component>
 </project>

@@ -586,6 +586,10 @@
         celda.addEventListener('click', function () {
             if (!skipNext) {
                 if (selectedFicha) {
+                    // Add ficha and location to a mutable list
+                    if (!window.fichasList) window.fichasList = [];
+                    window.fichasList.push({ fichaId: selectedFicha.id, location: selectedFichaLocation });
+                    console.log(`Current fichas list:`, window.fichasList);
                     // Move the selected ficha to the clicked cell
                     celda.appendChild(selectedFicha);
                     console.log(`Ficha: ${selectedFicha.id} is currently at location: ${selectedFichaLocation}`);

@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9bd83831-bb56-45de-979c-189431b9b070" name="Changes" comment="working undo">
+    <list default="true" id="9bd83831-bb56-45de-979c-189431b9b070" name="Changes" comment="extended to do also atril cells">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -76,7 +76,7 @@
       <workItem from="1745822745348" duration="3573000" />
       <workItem from="1749918968232" duration="11148000" />
       <workItem from="1764002755492" duration="304000" />
-      <workItem from="1764003149579" duration="965000" />
+      <workItem from="1764003149579" duration="2991000" />
     </task>
     <task id="LOCAL-00001" summary="fixed fichas location">
       <option name="closed" value="true" />
@@ -126,7 +126,15 @@
       <option name="project" value="LOCAL" />
       <updated>1750086880130</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="extended to do also atril cells">
+      <option name="closed" value="true" />
+      <created>1764004450863</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1764004450863</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -150,7 +158,8 @@
     <MESSAGE value="keeping locationn from last click" />
     <MESSAGE value="saving ficha and previous location into a stack" />
     <MESSAGE value="working undo" />
-    <option name="LAST_COMMIT_MESSAGE" value="working undo" />
+    <MESSAGE value="extended to do also atril cells" />
+    <option name="LAST_COMMIT_MESSAGE" value="extended to do also atril cells" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
